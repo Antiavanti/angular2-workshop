@@ -7,13 +7,16 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/mergeMap";
 import "rxjs/add/operator/retry";
 import {Observable} from "rxjs/Observable";
+import {ReplaySubject} from "rxjs";
 
 @Injectable()
 export class ProductsRepositoryRemote implements ProductsRepository {
   public request: any;
   constructor(http: Http) {
-    this.request = http.get('products.json')
-      .map(res => res.json());
+    this.request = new ReplaySubject(1);
+    http.get('products.json')
+      .map((res) => res.json())
+      .subscribe((res) => this.request.next(res));
   }
   getProductsPromo(): Observable<ProductModel[]> {
     return this.request.map((products: any) => {
