@@ -1,12 +1,10 @@
-import {COMMON_DIRECTIVES, ControlGroup, FormBuilder, Validators} from 'angular2/common';
-import {FORM_PROVIDERS} from 'angular2/common';
+import {COMMON_DIRECTIVES, FORM_PROVIDERS, ControlGroup, FormBuilder, Validators} from 'angular2/common';
 import {Component, Input} from 'angular2/core';
 import {FormValidator} from './validators'
 import {ProductModel} from './model';
 
 @Component({
   selector: 'products-order',
-  providers: [FORM_PROVIDERS],
   directives: [COMMON_DIRECTIVES],
   template: `
     <form [ngFormModel]="form" (submit)="sendOrder($event)">
