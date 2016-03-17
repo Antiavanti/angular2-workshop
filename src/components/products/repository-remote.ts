@@ -4,8 +4,6 @@ import {ProductsRepository} from './repository';
 import {ProductModel} from './model';
 
 import "rxjs/add/operator/map";
-import "rxjs/add/operator/mergeMap";
-import "rxjs/add/operator/retry";
 import {Observable} from "rxjs/Observable";
 import {ReplaySubject} from "rxjs";
 
